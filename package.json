@@ -1,0 +1,26 @@
+{
+  "name": "demo-k8s-fe",
+  "description": "Frontend Demo of K8S",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Torpe Consulting",
+  "repository": {
+    "type": "git",
+    "url": "//github.com/torpeconsulting/demo-k8s-fe.git"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "lint": "samples lint",
+    "pretest": "npm run lint",
+    "test": "npm run system-test"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {}
+}
