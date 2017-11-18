@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: demo-k8s-fe-deployment
+  labels:
+    app: demo-k8s-fe
+spec:
+  selector:
+    matchLabels:
+      app: demo-k8s-fe
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-k8s-fe
+    spec:
+      containers:
+      - name: api
+        image: ???
+        imagePullPolicy: Never
+        ports:
+        - name: demo-k8s-fe-service
+          containerPort: 3000
