@@ -6,6 +6,6 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: demo-k8s-fe-service
+    targetPort: 8080
   selector:
     app: demo-k8s-fe

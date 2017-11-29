@@ -5,6 +5,11 @@ metadata:
   labels:
     app: demo-k8s-fe
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0 # do not delete pods before adding them (surge)
+      maxSurge: 2  # when updating append two new pods every time
   selector:
     matchLabels:
       app: demo-k8s-fe
@@ -16,8 +21,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ???
+        image: fargozhu/demo-k8s-fe:v5
         imagePullPolicy: Never
         ports:
-        - name: demo-k8s-fe-service
-          containerPort: 3000
+        - containerPort: 3000
