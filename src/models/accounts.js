@@ -1,4 +1,4 @@
-
+const bankAccount = require('../libs/bank-accounts-api')
 const accounts = [
   {
     iban: "IBAN123123123123123",
@@ -16,20 +16,29 @@ const accounts = [
   }
 ]
 
-module.exports.getAllAccounts = () => {
+
+
+module.exports.getAllUserAccounts = () => {
   return function getAllUserAccounts(req, res) {
-    res.status(200).send(accounts)
+    bankAccount.getUserAllAccounts()
+      .then((success) => {
+        res.status(200).send(success)
+      })
+      .catch((failure) => {
+        res.status(failure.statusCode).send()
+      })
   }
 }
 
 module.exports.getAccountByIban = () => {
   return function getAccountByIban(req, res) {
-    const account = accounts.find((array) => { return array.iban === req.params.iban })
-
-    if (typeof account === 'undefined')
-      res.status(404).send({ error: { code: 404, description: 'account not found'}})
-
-    res.status(200).send(account)
+    bankAccount.getUserAccount(req.params.iban)
+      .then((success) => {
+        res.status(200).send(success)
+      })
+      .catch((failure) => {
+        res.status(failure.statusCode).send()
+      })
   }
 }
 

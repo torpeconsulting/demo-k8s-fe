@@ -36,10 +36,6 @@ describe('GET accounts', () => {
       .get('/v2/accounts/IBANUNKNOWN')
       .end((err, res) => {
         res.should.have.status(404)
-        res.body.should.be.an('object')
-        res.body.should.have.property('error')
-        res.body.should.have.nested.property('error.code').eql(404)
-        res.body.should.have.nested.property('error.description').eql('account not found')
         done()
       })
   })

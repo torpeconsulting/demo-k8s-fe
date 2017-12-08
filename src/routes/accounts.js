@@ -5,7 +5,7 @@ const accountsModel = require('../models/accounts')
 module.exports = router
 
 router.get('/v2/accounts',
-  accountsModel.getAllAccounts(),
+  accountsModel.getAllUserAccounts(),
   (req, res) => res.send()
 )
 
